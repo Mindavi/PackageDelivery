@@ -1,13 +1,14 @@
 package com.myapplication.rick.packagedelivery;
 
 import org.junit.Test;
+@SuppressWarnings({"unused","ConstantConditions"})
 
 /**
  * Created by Rick on 8-5-2016.
  */
 public class TestAddressClass {
-    private Street unevenStreet = new Street("unevenstreet", new Range(3, 9, RangeType.Uneven));
-    private Street evenStreet = new Street("evenstreet", new Range(4, 30, RangeType.Even));
+    private Street unevenStreet = new Street("unevenStreet", new Range(3, 9, RangeType.Uneven));
+    private Street evenStreet = new Street("evenStreet", new Range(4, 30, RangeType.Even));
 
     @Test
     public void AddressCreationUnevenMinimumValue() {

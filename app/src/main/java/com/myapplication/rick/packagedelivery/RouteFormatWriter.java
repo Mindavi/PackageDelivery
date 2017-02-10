@@ -22,7 +22,7 @@ class RouteFormatWriter {
     public void writeStreets(RouteFormat routeFormat) throws IOException {
         //TODO: make file io work
         File folder = new File(Environment.getExternalStorageDirectory(), "PackageDelivery");
-        File path = new File(folder, "myfile.csv");
+        File path = new File(folder, "myFile.csv");
         System.out.println(folder.toString());
         if (folder.mkdirs()) {
             System.out.println("Success");
