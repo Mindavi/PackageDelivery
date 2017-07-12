@@ -1,0 +1,19 @@
+# Requirements
+Using the MoSCoW method
+
+## Must have
+
+* Easy syntax for input route files
+* Automatically sort routes
+* Address auto-completion
+
+## Should have
+
+* Save current route
+
+## Could have
+
+* Leave comments at adresses or blocks for other people
+* Maps for parts that are hard without map
+
+## Won't have
