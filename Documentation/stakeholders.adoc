@@ -1,0 +1,16 @@
+# Stakeholders
+
+## The delivery people
+These are the most important stakeholders.
+They will use the app the whole day.
+
+### Representative
+Rick van Schijndel
+
+## The boss
+He wants everyone to be able to do their work good and fast.
+The app can help with that.
+
+## The supervisor
+The guy that needs to make sure the route lists are available at all times.
+He will be very happy if everyone has all the lists on the go.
