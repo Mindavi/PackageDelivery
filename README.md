@@ -16,13 +16,13 @@ we write all the stops we have to make on the list, which is in order.
 
 ## Problems of the route-lists
 At the moment, we have lists looking like this. 
-| #     | first letter pc          | Street & numbers                   | Blank space for street numbers
-| :-    | :----------------------- | :--------------------------------- | :-
-| 1     | P                        | Holastreet 1-9 2-20                |
-| 2     | C                        | Lawnway road                       |
-| 3     | P                        | Holastreet 11-51 22-30             |
-| ...   | ...                      | ...                                |
-| 154   | ...                      | ...                                | 
+| #       | first letter pc          | Street & numbers                   | Blank space for street numbers
+| :---    | :----------------------- | :--------------------------------- | :---
+| 1       | P                        | Holastreet 1-9 2-20                |
+| 2       | C                        | Lawnway road                       |
+| 3       | P                        | Holastreet 11-51 22-30             |
+| ...     | ...                      | ...                                |
+| 154     | ...                      | ...                                | 
 
 They are sealed with plastic and we write on them with whiteboard markers.
 * When they need to be changed, the list needs to be reprinted and resealed.
