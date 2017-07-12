@@ -15,5 +15,6 @@ Using the MoSCoW method
 
 * Leave comments at adresses or blocks for other people
 * Maps for parts that are hard without map
+* Suggestions to change the route list
 
 ## Won't have
