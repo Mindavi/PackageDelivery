@@ -23,11 +23,11 @@ At the moment, there are lists looking like this.
 
 [cols="1,1,6,12"]
 |===
-| 1     | P                        | Holastreet 1-9 2-20                |
-| 2     | C                        | Lawnway road                       |
-| 3     | P                        | Holastreet 11-51 22-30             |
-| ...   | ...                      | ...                                |
-| 154   | ...                      | ...                                | 
+| 1     | P     | Holastreet 1-9 2-20       |
+| 2     | C     | Lawnway road              |
+| 3     | P     | Holastreet 11-51 22-30    |
+| ...   | ...   | ...                       |
+| 154   | ...   | ...                       | 
 |===
 
 They are sealed with plastic and they're written on with whiteboard markers.
