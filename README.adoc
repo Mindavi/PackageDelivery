@@ -8,23 +8,26 @@ It will show the stops you have to make in order.
 Replacing route-lists currently being used at work.
 
 ## Reason for the route-lists
-The reason we need the lists is simple.
-We get the routes on a handheld computer, but they're not totally in order.
-In order to make sure we drive the route in the most efficient/easy way,
-we write all the stops we have to make on the list, which is in order.
+The reason there is a need for the lists is simple.
+The routes are given on a handheld computer, but they're not totally in order.
+In order to make sure the routes are driven in the most efficient/easy way,
+all the stops that have to be made are written on the list, which is in order.
 
 
 ## Problems of the route-lists
-At the moment, we have lists looking like this. 
-| #       | first letter pc          | Street & numbers                   | Blank space for street numbers
-| :---    | :----------------------- | :--------------------------------- | :---
-| 1       | P                        | Holastreet 1-9 2-20                |
-| 2       | C                        | Lawnway road                       |
-| 3       | P                        | Holastreet 11-51 22-30             |
-| ...     | ...                      | ...                                |
-| 154     | ...                      | ...                                | 
+At the moment, there are lists looking like this. 
 
-They are sealed with plastic and we write on them with whiteboard markers.
+[cols="1,1,6,12"]
+|===
+| 1     | P                        | Holastreet 1-9 2-20                |
+| 2     | C                        | Lawnway road                       |
+| 3     | P                        | Holastreet 11-51 22-30             |
+| ...   | ...                      | ...                                |
+| 154   | ...                      | ...                                | 
+|===
+
+They are sealed with plastic and they're written on with whiteboard markers.
+
 * When they need to be changed, the list needs to be reprinted and resealed.
 * When someone else needs the list, they have to find the list or the list needs to be printed out again.
 * It takes time filling the list, because you have to look for the right place to put a street number.
