@@ -22,13 +22,14 @@ internal class RouteFormatReader(private val context: Context) {
         val content = reader.readAll()
 
         for (row in content) {
-            if (row.size == 4) {
+            if (row.size == 5) {
                 val name = row[0]
                 val range_low = Integer.parseInt(row[1])
                 val range_high = Integer.parseInt(row[2])
                 val range_type = RangeType.valueOf(row[3])
+                val direction = Direction.valueOf(row[4])
                 val range = Range(range_low, range_high, range_type)
-                streets.add(Street(name, range))
+                streets.add(Street(name, range, direction))
             } else {
                 throw IOException("File is not valid")
             }

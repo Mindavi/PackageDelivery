@@ -5,7 +5,6 @@ enum class RangeType {
     Uneven,
     All;
 
-
     companion object {
 
         fun getRangeTypeFromNumber(number: Int): RangeType {

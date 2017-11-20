@@ -13,14 +13,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fillView()
+        //fillView()
     }
 
-    fun button_click(view: View) {
+    fun save_format_click(view: View) {
         val streets = ArrayList<Street>()
-        streets.add(Street("Trentstraat", Range(1, 40, RangeType.All)))
+        streets.add(Street("Trentstraat", Range(1, 40, RangeType.All), Direction.HighToLow))
         streets.add(Street("Leekbusweg", Range(1, 15, RangeType.All)))
         streets.add(Street("Langeboomstraat", Range(1, 89, RangeType.Uneven)))
+        streets.add(Street("Langeboomstraat", Range(2, 110, RangeType.Even), Direction.HighToLow))
 
         val routeFormat = RouteFormat(streets)
         val routeFormatWriter = RouteFormatWriter(this)
@@ -43,9 +44,10 @@ class MainActivity : AppCompatActivity() {
             noRouteFormatFound()
             return
         }
+        scroll_layout.removeAllViews()
         for (street in routeFormat.route) {
             val textView = TextView(this)
-            textView.text = "Name:${street.name}, Range:${street.range}"
+            textView.text = "${street.name}, ${street.range}, ${street.getDirection()}"
             scroll_layout.addView(textView)
         }
     }
@@ -63,14 +65,7 @@ class MainActivity : AppCompatActivity() {
         return null
     }
 
-    fun button2_click(view: View) {
-        val routeFormatReader = RouteFormatReader(this)
-        val routeFormat : RouteFormat
-        try {
-            routeFormat = routeFormatReader.parseStreets("myFile.csv")
-            println("$routeFormat")
-        } catch(e: IOException) {
-            e.printStackTrace()
-        }
+    fun load_format_click(view: View) {
+        fillView()
     }
 }

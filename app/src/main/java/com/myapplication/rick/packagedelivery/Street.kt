@@ -36,24 +36,16 @@ internal class Street : CSVWriteAble {
 
     override fun toString(): String {
         return "$name, $range"
-        //return String.format(Locale.US, "%s, %s", name, range.toString())
     }
 
     override fun toCSV(): Array<String> {
         val values = ArrayList(range.toCSV().asList())
         values.add(0, name)
-
-        //val values = arrayOfNulls<String>(1 + range.length())
-        //values[0] = name
-        //should be same as arraycopy
-        //for (int i = 0; i < range.length(); i++) {
-        //values[i + 1] = rangeValues[i];
-        //}
-        //System.arraycopy(rangeValues, 0, values, 1, rangeValues.size)
+        values.add(direction.toString())
         return values.toTypedArray()
     }
 
-    public fun getDirection(): Direction {
+    fun getDirection(): Direction {
         return direction
     }
 }

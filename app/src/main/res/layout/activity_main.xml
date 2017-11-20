@@ -9,11 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.myapplication.rick.packagedelivery.MainActivity">
 
+    <Button
+        android:id="@+id/btn_save_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="save_format_click"
+        android:text="Save format" />
+
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_below="@+id/btn_save_format"
         android:fillViewport="false">
 
         <LinearLayout
@@ -25,5 +33,14 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/btn_load_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:onClick="load_format_click"
+        android:text="Load format" />
 
 </RelativeLayout>
