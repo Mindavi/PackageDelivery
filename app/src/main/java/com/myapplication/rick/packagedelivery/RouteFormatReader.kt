@@ -12,7 +12,7 @@ import java.util.ArrayList
  */
 internal class RouteFormatReader(private val context: Context) {
     @Throws(IOException::class)
-    fun parseStreets(filename: String): ArrayList<Street> {
+    fun parseStreets(filename: String): RouteFormat {
         val folder = File(context.getExternalFilesDir(null),"PackageDelivery")
         val file = File(folder, filename)
 
@@ -33,6 +33,6 @@ internal class RouteFormatReader(private val context: Context) {
                 throw IOException("File is not valid")
             }
         }
-        return streets
+        return RouteFormat(streets)
     }
 }
