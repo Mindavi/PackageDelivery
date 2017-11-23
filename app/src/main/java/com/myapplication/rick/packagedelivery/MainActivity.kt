@@ -13,15 +13,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //fillView()
     }
 
-    fun save_format_click(view: View) {
+    fun onSaveFormatClick(view: View) {
         val streets = ArrayList<Street>()
         streets.add(Street("Trentstraat", Range(1, 40, RangeType.All), Direction.HighToLow))
         streets.add(Street("Leekbusweg", Range(1, 15, RangeType.All)))
         streets.add(Street("Langeboomstraat", Range(1, 89, RangeType.Uneven)))
         streets.add(Street("Langeboomstraat", Range(2, 110, RangeType.Even), Direction.HighToLow))
+        streets.add(Street("Vingerhoedspat", Range(1,2, RangeType.All)));
 
         val routeFormat = RouteFormat(streets)
         val routeFormatWriter = RouteFormatWriter(this)
@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         val routeFormat : RouteFormat?
         try {
             routeFormat = routeFormatReader.parseStreets("myFile.csv")
-            println("$routeFormat")
             return routeFormat
         } catch(e: IOException) {
             e.printStackTrace()
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         return null
     }
 
-    fun load_format_click(view: View) {
+    fun onLoadFormatClick(view: View) {
         fillView()
     }
 }
