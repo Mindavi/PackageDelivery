@@ -5,7 +5,6 @@ package com.myapplication.rick.packagedelivery
  */
 internal class Address
 constructor(val street: Street, val number: Int) {
-
     init {
         if (number < street.range.lowerBound || number > street.range.upperBound) {
             throw IllegalArgumentException("Number too high or too low")
