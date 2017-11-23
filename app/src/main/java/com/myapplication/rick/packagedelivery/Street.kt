@@ -14,7 +14,7 @@ internal class Street : CSVWriteAble {
 
     @Throws(IllegalArgumentException::class)
     constructor(name: String, range: Range) {
-        if (name.isEmpty()) {
+        if (name.isBlank()) {
             throw IllegalArgumentException("Empty name")
         }
 
