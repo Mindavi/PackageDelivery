@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PackageDelivery</string>
     <string name="title_activity_route_selection">RouteSelection</string>
+    <string name="route_selected">Selected route %1$s</string>
 </resources>

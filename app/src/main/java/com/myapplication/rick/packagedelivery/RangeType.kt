@@ -1,18 +1,23 @@
 package com.myapplication.rick.packagedelivery
 
-enum class RangeType {
+import android.os.Parcel
+import android.os.Parcelable
+
+enum class RangeType : Parcelable {
     Even,
     Uneven,
     All;
 
-    companion object {
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(toString())
+    }
 
-        fun getRangeTypeFromNumber(number: Int): RangeType {
-            return if (number % 2 == 0) {
-                Even
-            } else {
-                Uneven
-            }
-        }
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<RangeType> {
+        override fun createFromParcel(parcel: Parcel): RangeType =
+                RangeType.valueOf(parcel.readString())
+
+        override fun newArray(size: Int): Array<RangeType?> = arrayOfNulls(size)
     }
 }

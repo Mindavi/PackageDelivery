@@ -23,18 +23,22 @@ class RouteSelection : Activity() {
         val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routes)
         routesToSelect.adapter = adapter
         routesToSelect.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, adapterView.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show()
-            // TODO: create new activity with route
+            val routeFormat = adapterView.getItemAtPosition(i)
+            if (routeFormat is RouteFormat)
+            {
+                Toast.makeText(this, getString(R.string.route_selected, routeFormat.toString()), Toast.LENGTH_SHORT).show()
+                val intent = newIntent(this, routeFormat)
+                startActivity(intent)
+            }
         }
     }
 
     internal companion object {
-
-        private val INTENT_ROUTE_FORMAT = "user_id"
+        val INTENT_ROUTE_FORMAT = "com.myapplication.rick.packagedelivery.routeFormat"
 
         fun newIntent(context: Context, routeFormat: RouteFormat): Intent {
-            val intent = Intent(context, RouteSelection::class.java)
-            //intent.putExtra(INTENT_ROUTE_FORMAT, routeFormat)
+            val intent = Intent(context, RouteCreation::class.java)
+            intent.putExtra(INTENT_ROUTE_FORMAT, routeFormat)
             return intent
         }
     }
@@ -54,9 +58,4 @@ class RouteSelection : Activity() {
             return null
         }
     }
-
-    fun fillRoutes() {
-        //
-    }
-
 }

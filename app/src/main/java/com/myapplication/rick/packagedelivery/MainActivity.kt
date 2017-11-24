@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         scroll_layout.removeAllViews()
         for (street in routeFormat.route) {
             val textView = TextView(this)
-            textView.text = "${street.name}, ${street.range}, ${street.getDirection()}"
+            textView.text = "${street.name}, ${street.range}, ${street.direction}"
             scroll_layout.addView(textView)
         }
     }

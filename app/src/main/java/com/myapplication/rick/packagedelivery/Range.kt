@@ -1,12 +1,14 @@
 package com.myapplication.rick.packagedelivery
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.util.Locale
 
 /**
  * Created by Rick on 1-5-2016.
  */
 class Range
-constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) : CSVWriteAble {
+constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) : CSVWriteAble, Parcelable {
 
     init {
         if (lowerBound < 1) {
@@ -26,17 +28,31 @@ constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) 
         }
     }
 
+    constructor(parcel: Parcel) : this(
+            parcel.readInt(),
+            parcel.readInt(),
+            parcel.readParcelable(RangeType::class.java.classLoader))
+
     override fun toString(): String {
         return "$lowerBound-$upperBound, $rangeType"
-        //return String.format(Locale.US, "%d-%d, %s", lowerBound, upperBound, rangeType.toString())
     }
 
     override fun toCSV(): Array<String> {
         return arrayOf(lowerBound.toString(), upperBound.toString(), rangeType.toString())
     }
 
-//    fun length(): Int {
-//        return 3
-//    }
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(lowerBound)
+        parcel.writeInt(upperBound)
+        parcel.writeParcelable(rangeType, flags)
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<Range> {
+        override fun createFromParcel(parcel: Parcel): Range = Range(parcel)
+
+        override fun newArray(size: Int): Array<Range?> = arrayOfNulls(size)
+    }
 }
 

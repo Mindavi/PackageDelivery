@@ -16,7 +16,7 @@ internal class AddressComparator(private val routeFormat: RouteFormat): Comparat
         }
         if (p0.street == p1.street)
         {
-            return if (p0.street.getDirection() == Direction.LowToHigh)
+            return if (p0.street.direction == Direction.LowToHigh)
                 p0.number - p1.number
             else
                 p1.number - p0.number
