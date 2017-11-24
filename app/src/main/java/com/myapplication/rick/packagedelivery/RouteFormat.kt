@@ -14,10 +14,9 @@ internal class RouteFormat(val name: String, val route: ArrayList<Street> = Arra
     }
 
     constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            arrayListOf<Street>().apply {
-                parcel.readList(this, Street::class.java.classLoader)
-            })
+            parcel.readString()) {
+        parcel.readTypedList(route, Street.CREATOR)
+    }
 
     fun addStreet(street: Street): Boolean =
             !route.contains(street) && route.add(street)
@@ -33,6 +32,7 @@ internal class RouteFormat(val name: String, val route: ArrayList<Street> = Arra
     override fun toString(): String = name
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
+        parcel.writeTypedList(route)
     }
 
     override fun describeContents(): Int = 0
