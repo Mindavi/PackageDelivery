@@ -15,7 +15,7 @@ class TestRouteComparator {
     private val trentstraat: Street = Street("Trentstraat", Range(1, 40, RangeType.All), Direction.HighToLow)
     private val schoondonkseweg: Street = Street("Schoondonkseweg", Range(2, 42, RangeType.Even), Direction.LowToHigh)
     private val grassstreet: Street = Street("Grassstreet", Range(1, 19, RangeType.All))
-    private val routeFormat: RouteFormat = RouteFormat(arrayListOf(trentstraat, schoondonkseweg, grassstreet))
+    private val routeFormat: RouteFormat = RouteFormat("Veldhoven 3", arrayListOf(trentstraat, schoondonkseweg, grassstreet))
     private var route: Route = Route(routeFormat)
 
     // sorted addresses

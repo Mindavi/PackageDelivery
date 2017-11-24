@@ -1,44 +1,27 @@
 package com.myapplication.rick.packagedelivery
 
+import android.os.Parcelable
 import java.util.ArrayList
 
 /**
  * Created by Rick on 1-5-2016.
+ * Sorted list describing the order of a route
  */
-internal class RouteFormat {
-    val route: ArrayList<Street>
-
-    constructor() {
-        route = ArrayList(75)
+internal class RouteFormat(val name: String, val route: ArrayList<Street> = ArrayList(75)) {
+    init {
+        if (name.isEmpty()) throw IllegalArgumentException("Name mustn't be empty")
     }
 
-    constructor(route: ArrayList<Street>) {
-        this.route = route
-    }
+    fun addStreet(street: Street): Boolean =
+            !route.contains(street) && route.add(street)
 
-    //if street is not null and route does not contain the street, add
-    fun addStreet(street: Street?): Boolean {
-        return street != null && !route.contains(street) && route.add(street)
-    }
+    fun removeStreet(street: Street): Boolean = route.remove(street)
 
-    /*
-    public boolean removeStreet(Street street) {
-        return route.remove(street);
-    }*/
+    fun totalStreets(): Int = route.size
 
-    fun totalStreets(): Int {
-        return route.size
-    }
+    fun reset() = route.clear()
 
-    fun reset() {
-        route.clear()
-    }
+    fun toCSVList(): ArrayList<Array<String>> = route.mapTo(ArrayList()) { it.toCSV() }
 
-    fun toCSVList(): ArrayList<Array<String>> {
-        val csvStreets = ArrayList<Array<String>>()
-        for (street in route) {
-            csvStreets.add(street.toCSV())
-        }
-        return csvStreets
-    }
+    override fun toString(): String = name
 }

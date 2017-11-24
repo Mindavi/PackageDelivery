@@ -1,5 +1,6 @@
 package com.myapplication.rick.packagedelivery
 
+import android.os.Parcelable
 import java.util.Locale
 
 /**

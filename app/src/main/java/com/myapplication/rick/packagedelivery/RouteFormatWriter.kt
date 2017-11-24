@@ -14,9 +14,9 @@ import java.io.IOException
 internal class RouteFormatWriter(private val context: Context) {
     @Throws(IOException::class)
     fun writeStreets(routeFormat: RouteFormat) {
-        val folder = File(context.getExternalFilesDir(null),"PackageDelivery")
+        val folder = File(context.getExternalFilesDir(null), "Routes")
 
-        val path = File(folder, "myFile.csv")
+        val path = File(folder, "${routeFormat.name}.csv")
         println(folder.toString())
         if (folder.mkdirs()) {
             println("Success")

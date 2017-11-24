@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         streets.add(Street("Langeboomstraat", Range(2, 110, RangeType.Even), Direction.HighToLow))
         streets.add(Street("Vingerhoedspat", Range(1,2, RangeType.All)));
 
-        val routeFormat = RouteFormat(streets)
+        val routeFormat = RouteFormat("Test 4 Rick", streets)
         val routeFormatWriter = RouteFormatWriter(this)
         try {
             routeFormatWriter.writeStreets(routeFormat)
@@ -54,9 +54,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun readRouteFormat(): RouteFormat? {
         val routeFormatReader = RouteFormatReader(this)
-        val routeFormat : RouteFormat?
+        val routeFormat : RouteFormat
         try {
-            routeFormat = routeFormatReader.parseStreets("myFile.csv")
+            routeFormat = routeFormatReader.parseStreets("Lelystad 3 Rick.csv")
             return routeFormat
         } catch(e: IOException) {
             e.printStackTrace()

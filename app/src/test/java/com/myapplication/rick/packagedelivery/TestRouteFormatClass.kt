@@ -15,7 +15,7 @@ class TestRouteFormatClass {
     private val standardStreet: Street
 
     init {
-        standardRoute = RouteFormat()
+        standardRoute = RouteFormat("Standard")
         standardStreet = Street("Street", Range(1, 20, RangeType.All))
     }
 

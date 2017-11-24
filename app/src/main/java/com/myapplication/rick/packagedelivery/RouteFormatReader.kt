@@ -13,7 +13,7 @@ import java.util.ArrayList
 internal class RouteFormatReader(private val context: Context) {
     @Throws(IOException::class)
     fun parseStreets(filename: String): RouteFormat {
-        val folder = File(context.getExternalFilesDir(null),"PackageDelivery")
+        val folder = File(context.getExternalFilesDir(null), "Routes")
         val file = File(folder, filename)
 
         val streets = ArrayList<Street>()
@@ -22,7 +22,7 @@ internal class RouteFormatReader(private val context: Context) {
         val content = reader.readAll()
 
         for (row in content) {
-            println("Row size: ${row.size}")
+            //println("Row size: ${row.size}")
             if (row.size == 5) {
                 val name = row[0]
                 val range_low = Integer.parseInt(row[1])
@@ -35,6 +35,7 @@ internal class RouteFormatReader(private val context: Context) {
                 throw IOException("File is not valid")
             }
         }
-        return RouteFormat(streets)
+        val name = filename.subSequence(0, filename.lastIndexOf(".csv")).toString()
+        return RouteFormat(name, streets)
     }
 }
