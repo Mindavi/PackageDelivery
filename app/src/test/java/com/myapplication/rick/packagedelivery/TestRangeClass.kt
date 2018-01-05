@@ -75,4 +75,9 @@ class TestRangeClass {
     fun rangeCreationLowerBoundUnevenWithRangeTypeEven() {
         val range = Range(lowerBoundUneven, upperBoundEven, RangeType.Even)
     }
+
+    @Test
+    fun rangeCreationOneNumber() {
+        val range = Range(lowerBoundEven, lowerBoundEven, RangeType.All)
+    }
 }
