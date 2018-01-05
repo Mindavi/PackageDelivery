@@ -7,12 +7,11 @@ import org.junit.Assert.*
  * Created by Rick on 2-5-2016.
  */
 class TestStreetClass {
-    private val streetName: String
+    private val streetName: String = "School street"
 
     private val range: Range
 
     init {
-        streetName = "schoolstreet"
         val lowerBoundStandard = 1
         val upperBoundStandard = 20
         range = Range(lowerBoundStandard, upperBoundStandard, RangeType.All)
