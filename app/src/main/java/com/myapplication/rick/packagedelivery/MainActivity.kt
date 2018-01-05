@@ -2,9 +2,9 @@ package com.myapplication.rick.packagedelivery
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 
 import java.io.IOException
 import java.util.ArrayList
@@ -14,23 +14,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_save_format.setOnClickListener(View.OnClickListener { _ ->
+        btn_save_format.setOnClickListener({ _ ->
             val streets = ArrayList<Street>()
             streets.add(Street("Trentstraat", Range(1, 40, RangeType.All), Direction.HighToLow))
             streets.add(Street("Leekbusweg", Range(1, 15, RangeType.All)))
             streets.add(Street("Langeboomstraat", Range(1, 89, RangeType.Uneven)))
             streets.add(Street("Langeboomstraat", Range(2, 110, RangeType.Even), Direction.HighToLow))
-            streets.add(Street("Vingerhoedspat", Range(1,2, RangeType.All)));
+            streets.add(Street("Vingerhoedspat", Range(1,2, RangeType.All)))
 
+            val folder = File(this.getExternalFilesDir(null), "routes")
             val routeFormat = RouteFormat("Test 4 Rick", streets)
-            val routeFormatWriter = RouteFormatWriter(this)
+            val routeFormatWriter = RouteFormatWriter()
             try {
-                routeFormatWriter.writeStreets(routeFormat)
+                routeFormatWriter.writeStreets(routeFormat, folder)
             } catch (e: IOException) {
                 e.printStackTrace()
             }
         })
-        btn_load_format.setOnClickListener(View.OnClickListener { _ ->
+        btn_load_format.setOnClickListener({ _ ->
             fillView()
         })
     }
@@ -56,13 +57,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun readRouteFormat(): RouteFormat? {
-        val routeFormatReader = RouteFormatReader(this)
-        val routeFormat : RouteFormat
-        try {
-            routeFormat = routeFormatReader.parseStreets("Lelystad 3 Rick.csv")
-            return routeFormat
-        } catch(e: IOException) {
-            e.printStackTrace()
+        val folder = File(this.getExternalFilesDir(null), "routes")
+        val routeFiles = folder.listFiles()
+        if (routeFiles.count() < 1) return null // there are no files
+        val routeFormatReader = RouteFormatReader()
+        for (routeFile in routeFiles) {
+            println(routeFile.absolutePath)
+            try {
+                return routeFormatReader.parseStreets(routeFile)
+            } catch(e: IOException) {
+                // probably invalid file, try next
+                println(e.message)
+            }
         }
         return null
     }

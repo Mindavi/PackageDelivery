@@ -10,14 +10,11 @@ import java.util.ArrayList
 /**
  * Created by Rick on 3-5-2016.
  */
-internal class RouteFormatReader(private val context: Context) {
+internal class RouteFormatReader {
     @Throws(IOException::class)
-    fun parseStreets(filename: String): RouteFormat {
-        val folder = File(context.getExternalFilesDir(null), "Routes")
-        val file = File(folder, filename)
-
+    fun parseStreets(routeFile: File): RouteFormat {
         val streets = ArrayList<Street>()
-        val reader = CSVReader(FileReader(file))
+        val reader = CSVReader(FileReader(routeFile))
 
         val content = reader.readAll()
 
@@ -35,7 +32,7 @@ internal class RouteFormatReader(private val context: Context) {
                 throw IOException("File is not valid")
             }
         }
-        val name = filename.subSequence(0, filename.lastIndexOf(".csv")).toString()
+        val name = routeFile.nameWithoutExtension
         return RouteFormat(name, streets)
     }
 }
