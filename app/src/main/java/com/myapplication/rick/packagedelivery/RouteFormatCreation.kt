@@ -9,7 +9,7 @@ import java.io.File
 import java.io.IOException
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class RouteFormatCreation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
