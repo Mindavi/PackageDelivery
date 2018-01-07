@@ -7,9 +7,7 @@ import java.util.Locale
 /**
  * Created by Rick on 1-5-2016.
  */
-class Range
-constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) : CSVWriteAble, Parcelable {
-
+class Range(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) : CSVWriteAble, Parcelable {
     init {
         if (lowerBound < 1) {
             throw IllegalArgumentException("Illegal lower bound")
@@ -28,11 +26,6 @@ constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) 
         }
     }
 
-    constructor(parcel: Parcel) : this(
-            parcel.readInt(),
-            parcel.readInt(),
-            parcel.readParcelable(RangeType::class.java.classLoader))
-
     override fun toString(): String {
         return "$lowerBound-$upperBound, $rangeType"
     }
@@ -49,10 +42,12 @@ constructor(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) 
 
     override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<Range> {
-        override fun createFromParcel(parcel: Parcel): Range = Range(parcel)
-
-        override fun newArray(size: Int): Array<Range?> = arrayOfNulls(size)
+    companion object {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Range> {
+            override fun createFromParcel(parcel: Parcel): Range = Range(parcel.readInt(), parcel.readInt(), parcel.readParcelable(RangeType::class.java.classLoader))
+            override fun newArray(size: Int): Array<Range?> = arrayOfNulls(size)
+        }
     }
 }
 

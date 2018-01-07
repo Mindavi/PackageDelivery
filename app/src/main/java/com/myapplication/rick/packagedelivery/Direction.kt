@@ -6,7 +6,7 @@ import android.os.Parcelable
 /**
  * Created by Rick on 3-5-2016.
  */
-enum class Direction() : Parcelable {
+enum class Direction : Parcelable {
     LowToHigh,
     HighToLow;
 
@@ -16,9 +16,11 @@ enum class Direction() : Parcelable {
 
     override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<Direction> {
-        override fun createFromParcel(parcel: Parcel): Direction = Direction.valueOf(parcel.readString())
-
-        override fun newArray(size: Int): Array<Direction?> = arrayOfNulls(size)
+    companion object {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Direction> {
+            override fun newArray(size: Int): Array<Direction?> = arrayOfNulls<Direction?>(size)
+            override fun createFromParcel(parcel: Parcel): Direction = Direction.valueOf(parcel.readString())
+        }
     }
 }

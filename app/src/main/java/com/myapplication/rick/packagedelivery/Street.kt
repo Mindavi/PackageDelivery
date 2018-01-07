@@ -7,40 +7,9 @@ import java.util.Locale
 /**
  * Created by Rick on 1-5-2016.
  */
-class Street() : CSVWriteAble, Parcelable {
-    lateinit var name: String
-        private set
-    lateinit var range: Range
-        private set
-    lateinit var direction: Direction
-        private set
-
-    constructor(parcel: Parcel) : this() {
-        this.name = parcel.readString()
-        this.range = parcel.readParcelable(Range::class.java.classLoader)
-        this.direction = parcel.readParcelable(Direction::class.java.classLoader)
-    }
-
-    @Throws(IllegalArgumentException::class)
-    constructor(name: String, range: Range) : this() {
-        if (name.isBlank()) {
-            throw IllegalArgumentException("Empty name")
-        }
-
-        this.name = name
-        this.range = range
-        this.direction = Direction.LowToHigh //default value
-    }
-
-    @Throws(IllegalArgumentException::class)
-    constructor(name: String, range: Range, direction: Direction): this() {
-        if (name.isEmpty()) {
-            throw IllegalArgumentException("Empty name")
-        }
-
-        this.name = name
-        this.range = range
-        this.direction = direction
+class Street(val name: String, val range: Range, val direction: Direction = Direction.LowToHigh) : CSVWriteAble, Parcelable {
+    init {
+        if (name.isEmpty()) throw IllegalArgumentException("Empty name")
     }
 
     override fun toString(): String = "$name, $range"
@@ -60,9 +29,17 @@ class Street() : CSVWriteAble, Parcelable {
 
     override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<Street> {
-        override fun createFromParcel(parcel: Parcel): Street = Street(parcel)
+    companion object {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Street> {
+            override fun newArray(size: Int): Array<Street?> = arrayOfNulls<Street?>(size)
 
-        override fun newArray(size: Int): Array<Street?> = arrayOfNulls(size)
+            override fun createFromParcel(parcel: Parcel): Street {
+                val name: String = parcel.readString()
+                val range: Range = parcel.readParcelable(Range::class.java.classLoader)
+                val direction: Direction = parcel.readParcelable(Direction::class.java.classLoader)
+                return Street(name, range, direction)
+            }
+        }
     }
 }

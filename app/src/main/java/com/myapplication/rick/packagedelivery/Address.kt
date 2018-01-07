@@ -6,12 +6,7 @@ import android.os.Parcelable
 /**
  * Created by Rick on 7-5-2016.
  */
-class Address
-constructor(val street: Street, val number: Int): Parcelable {
-    constructor(parcel: Parcel) : this(
-            parcel.readParcelable(Street::class.java.classLoader),
-            parcel.readInt())
-
+class Address(val street: Street, val number: Int): Parcelable {
     init {
         if (number < street.range.lowerBound || number > street.range.upperBound) {
             throw IllegalArgumentException("Number too high or too low")
@@ -30,13 +25,17 @@ constructor(val street: Street, val number: Int): Parcelable {
         parcel.writeInt(number)
     }
 
-    override fun describeContents(): Int {
-        return 0
-    }
+    override fun describeContents(): Int = 0
 
-    companion object CREATOR : Parcelable.Creator<Address> {
-        override fun createFromParcel(parcel: Parcel): Address = Address(parcel)
-
-        override fun newArray(size: Int): Array<Address?> = arrayOfNulls(size)
+    companion object {
+        @JvmField
+        val CREATOR = object : Parcelable.Creator<Address> {
+            override fun createFromParcel(parcel: Parcel): Address {
+                val street: Street = parcel.readParcelable(Street::class.java.classLoader)
+                val number: Int = parcel.readInt()
+                return Address(street, number)
+            }
+            override fun newArray(size: Int): Array<Address?> = arrayOfNulls(size)
+        }
     }
 }
