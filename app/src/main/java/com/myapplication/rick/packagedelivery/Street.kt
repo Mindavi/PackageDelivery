@@ -9,7 +9,7 @@ import java.util.Locale
  */
 class Street(val name: String, val range: Range, val direction: Direction = Direction.LowToHigh) : CSVWriteAble, Parcelable {
     init {
-        if (name.isEmpty()) throw IllegalArgumentException("Empty name")
+        if (name.isBlank()) throw IllegalArgumentException("Empty name")
     }
 
     override fun toString(): String = "$name, $range"
