@@ -9,12 +9,12 @@ import java.util.*
  */
 internal class Route(private val routeFormat: RouteFormat) {
     val addresses: ArrayList<Address> = ArrayList()
-    val comparator: AddressComparator = AddressComparator(routeFormat)
+    private val comparator: AddressComparator = AddressComparator(routeFormat)
 
     @Throws(IllegalArgumentException::class)
     fun addAddress(address: Address): Boolean {
         for (street in routeFormat.route) {
-            if (street == address.street) { //if street is in the routeformat
+            if (street == address.street) { //if street is in the routeFormat
                 addresses.add(address)
                 return true
             }
