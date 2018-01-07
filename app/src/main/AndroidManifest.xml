@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".RouteSelection"
+            android:name=".activities.RouteSelection"
             android:label="@string/title_activity_route_selection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +21,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RouteFormatCreation">
+            android:name=".activities.RouteFormatCreation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RouteCreation" />
+        <activity android:name=".activities.RouteCreation" />
     </application>
 
 </manifest>

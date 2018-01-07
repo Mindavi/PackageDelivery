@@ -1,8 +1,9 @@
-package com.myapplication.rick.packagedelivery
+package com.myapplication.rick.packagedelivery.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.myapplication.rick.packagedelivery.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
@@ -20,7 +21,7 @@ class RouteFormatCreation : AppCompatActivity() {
             streets.add(Street("Leekbusweg", Range(1, 15, RangeType.All)))
             streets.add(Street("Langeboomstraat", Range(1, 89, RangeType.Uneven)))
             streets.add(Street("Langeboomstraat", Range(2, 110, RangeType.Even), Direction.HighToLow))
-            streets.add(Street("Vingerhoedspat", Range(1,2, RangeType.All)))
+            streets.add(Street("Vingerhoedspat", Range(1, 2, RangeType.All)))
 
             val folder = File(this.getExternalFilesDir(null), "routes")
             val routeFormat = RouteFormat("Test 4 Rick", streets)

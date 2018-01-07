@@ -1,4 +1,4 @@
-package com.myapplication.rick.packagedelivery
+package com.myapplication.rick.packagedelivery.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.myapplication.rick.packagedelivery.*
 
 
 class RouteCreation : AppCompatActivity() {

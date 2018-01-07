@@ -1,4 +1,4 @@
-package com.myapplication.rick.packagedelivery
+package com.myapplication.rick.packagedelivery.activities
 
 import android.os.Bundle
 import android.app.Activity
@@ -6,6 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.myapplication.rick.packagedelivery.R
+import com.myapplication.rick.packagedelivery.RouteFormat
+import com.myapplication.rick.packagedelivery.RouteFormatReader
 
 import kotlinx.android.synthetic.main.activity_route_selection.*
 import java.io.File
