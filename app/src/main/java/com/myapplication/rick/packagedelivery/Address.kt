@@ -6,7 +6,7 @@ import android.os.Parcelable
 /**
  * Created by Rick on 7-5-2016.
  */
-internal class Address
+class Address
 constructor(val street: Street, val number: Int): Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readParcelable(Street::class.java.classLoader),

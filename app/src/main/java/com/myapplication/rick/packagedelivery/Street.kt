@@ -7,7 +7,7 @@ import java.util.Locale
 /**
  * Created by Rick on 1-5-2016.
  */
-internal class Street() : CSVWriteAble, Parcelable {
+class Street() : CSVWriteAble, Parcelable {
     lateinit var name: String
         private set
     lateinit var range: Range
