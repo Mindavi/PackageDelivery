@@ -24,7 +24,7 @@ class AddressAdapter(private val addresses: ArrayList<Address>): RecyclerView.Ad
         holder.textViewStreetNumber.text = address.number.toString()
     }
 
-    class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val textViewStreetName: TextView = view.street_name_text
         val textViewStreetNumber : TextView = view.street_number_text
     }
