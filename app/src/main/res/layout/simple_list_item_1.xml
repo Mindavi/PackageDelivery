@@ -9,4 +9,5 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:ems="10" />
+    <View style="@style/Divider"/>
 </RelativeLayout>
