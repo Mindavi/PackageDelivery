@@ -37,7 +37,7 @@ class RouteSelection : Activity() {
     }
 
     internal companion object {
-        val INTENT_ROUTE_FORMAT = "com.myapplication.rick.packagedelivery.routeFormat"
+        const val INTENT_ROUTE_FORMAT = "com.myapplication.rick.packagedelivery.routeFormat"
 
         fun newIntent(context: Context, routeFormat: RouteFormat): Intent {
             val intent = Intent(context, RouteCreation::class.java)
