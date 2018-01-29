@@ -3,4 +3,6 @@
     <string name="title_activity_route_selection">RouteSelection</string>
     <string name="route_selected">Selected route %1$s</string>
     <string name="add_item">Add item</string>
+    <string name="save_format">Save format</string>
+    <string name="load_format">Load format</string>
 </resources>

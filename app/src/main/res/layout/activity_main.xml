@@ -13,7 +13,7 @@
         android:id="@+id/btn_save_format"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save format" />
+        android:text="@string/save_format" />
 
     <ScrollView
         android:id="@+id/scroll_view"
@@ -39,6 +39,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="Load format" />
-
+        android:text="@string/load_format" />
 </RelativeLayout>
