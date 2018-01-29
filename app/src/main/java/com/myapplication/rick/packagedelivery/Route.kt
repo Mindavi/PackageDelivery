@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Created by Rick on 7-5-2016.
  */
-internal class Route(private val routeFormat: RouteFormat) {
+internal class Route(private val routeFormat: RouteFormat) : Parcelable {
     val addresses: ArrayList<Address> = ArrayList()
     private val comparator: AddressComparator = AddressComparator(routeFormat)
 
@@ -24,5 +24,24 @@ internal class Route(private val routeFormat: RouteFormat) {
 
     fun sort() {
         Collections.sort(addresses, comparator)
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeTypedList(addresses)
+        parcel.writeParcelable(routeFormat, flags)
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<Route> {
+        override fun createFromParcel(parcel: Parcel): Route {
+            val route = Route(parcel.readParcelable(RouteFormat::class.java.classLoader))
+            val list = ArrayList<Address>()
+            parcel.readTypedList(list, Address.CREATOR)
+            list.forEach { route.addAddress(it) }
+            return route
+        }
+
+        override fun newArray(size: Int): Array<Route?> = arrayOfNulls(size = size)
     }
 }
