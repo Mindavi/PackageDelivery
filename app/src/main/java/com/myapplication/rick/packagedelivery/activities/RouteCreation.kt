@@ -1,5 +1,7 @@
 package com.myapplication.rick.packagedelivery.activities
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -25,10 +27,17 @@ class RouteCreation : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.add_street -> {
-                Toast.makeText(this, "Text", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "Text", Toast.LENGTH_SHORT).show()
+                val intent = newIntent(this, route.routeFormat)
+                startActivity(intent)
             }
         }
         return true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(INTENT_ROUTE, route)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +45,14 @@ class RouteCreation : AppCompatActivity() {
         setContentView(R.layout.activity_route_creation)
         val toolbar = creation_toolbar
         setSupportActionBar(toolbar)
-        val routeFormat = intent.getParcelableExtra<RouteFormat>(RouteSelection.INTENT_ROUTE_FORMAT)
-        routeFormat.route.forEach { println(it.name) }
-        route = Route(routeFormat)
+
+        route = if (null != savedInstanceState) {
+            savedInstanceState.getParcelable(INTENT_ROUTE)
+        } else {
+            val routeFormat = intent.getParcelableExtra<RouteFormat>(RouteSelection.INTENT_ROUTE_FORMAT)
+            routeFormat.route.forEach { println(it.name) }
+            Route(routeFormat)
+        }
 
         route_creation_recycler_view.setHasFixedSize(true)
         routeLayoutManager = LinearLayoutManager(this)
@@ -47,5 +61,16 @@ class RouteCreation : AppCompatActivity() {
         route_creation_recycler_view.adapter = routeAdapter
 
         addresses.add(Address(Street("Street1", Range(1, 30, RangeType.All)), 15))
+    }
+
+    internal companion object {
+        const val INTENT_ROUTE_FORMAT = "com.myapplication.rick.packagedelivery.routeFormat"
+        const val INTENT_ROUTE = "com.myapplication.rick.packagedelivery.route"
+
+        private fun newIntent(context: Context, routeFormat: RouteFormat?): Intent {
+            val intent = Intent(context, AddAddress::class.java)
+            if (routeFormat != null) intent.putExtra(INTENT_ROUTE_FORMAT, routeFormat)
+            return intent
+        }
     }
 }

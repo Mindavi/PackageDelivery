@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Created by Rick on 7-5-2016.
  */
-internal class Route(private val routeFormat: RouteFormat) : Parcelable {
+internal class Route(val routeFormat: RouteFormat) : Parcelable {
     val addresses: ArrayList<Address> = ArrayList()
     private val comparator: AddressComparator = AddressComparator(routeFormat)
 

@@ -25,7 +25,7 @@ class RouteSelection : Activity() {
         val routes = readRoutes() ?: return
         val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routes)
         routesToSelect.adapter = adapter
-        routesToSelect.setOnItemClickListener { adapterView, view, i, l ->
+        routesToSelect.setOnItemClickListener { adapterView, _, i, _ ->
             val routeFormat = adapterView.getItemAtPosition(i)
             if (routeFormat is RouteFormat)
             {

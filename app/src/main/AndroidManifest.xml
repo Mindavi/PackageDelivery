@@ -20,8 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.RouteFormatCreation">
+        <activity android:name=".activities.RouteFormatCreation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +28,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.RouteCreation" />
+        <activity
+            android:name=".activities.AddAddress"
+            android:label="@string/title_activity_add_address"
+            android:parentActivityName=".activities.RouteCreation"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.myapplication.rick.packagedelivery.activities.RouteCreation" />
+        </activity>
     </application>
 
 </manifest>
