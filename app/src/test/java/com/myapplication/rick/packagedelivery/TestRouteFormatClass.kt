@@ -11,13 +11,8 @@ import org.junit.Assert.*
  * Created by Rick on 2-5-2016.
  */
 class TestRouteFormatClass {
-    private val standardRoute: RouteFormat
-    private val standardStreet: Street
-
-    init {
-        standardRoute = RouteFormat("Standard")
-        standardStreet = Street("Street", Range(1, 20, RangeType.All))
-    }
+    private val standardRoute: RouteFormat = RouteFormat("Standard")
+    private val standardStreet: Street = Street("Street", Range(1, 20, RangeType.All))
 
     @Before
     fun reset() {
