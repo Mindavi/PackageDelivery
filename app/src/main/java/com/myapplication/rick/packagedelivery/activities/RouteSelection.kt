@@ -1,9 +1,9 @@
 package com.myapplication.rick.packagedelivery.activities
 
 import android.os.Bundle
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.myapplication.rick.packagedelivery.R
@@ -15,12 +15,13 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
 
-class RouteSelection : Activity() {
+class RouteSelection : AppCompatActivity() {
 
     private val routeFormatReader: RouteFormatReader = RouteFormatReader()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_selection)
+        setSupportActionBar(standard_toolbar)
 
         val routes = readRoutes() ?: return
         val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routes)

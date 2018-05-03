@@ -27,7 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RouteCreation" />
+        <activity
+            android:name=".activities.RouteCreation"
+            android:parentActivityName=".activities.RouteSelection">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.myapplication.rick.packagedelivery.activities.RouteSelection" />
+        </activity>
         <activity
             android:name=".activities.AddAddress"
             android:label="@string/title_activity_add_address"

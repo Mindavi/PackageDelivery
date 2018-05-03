@@ -30,9 +30,10 @@ class RouteCreation : AppCompatActivity() {
 //                Toast.makeText(this, "Text", Toast.LENGTH_SHORT).show()
                 val intent = newIntent(this, route.routeFormat)
                 startActivity(intent)
+                return true
             }
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -43,8 +44,8 @@ class RouteCreation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_creation)
-        val toolbar = creation_toolbar
-        setSupportActionBar(toolbar)
+        setSupportActionBar(creation_toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         route = if (null != savedInstanceState) {
             savedInstanceState.getParcelable(INTENT_ROUTE)
