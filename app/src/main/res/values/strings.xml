@@ -6,4 +6,5 @@
     <string name="save_format">Save format</string>
     <string name="load_format">Load format</string>
     <string name="title_activity_add_address">AddAddress</string>
+    <string name="input_street_name">Input a street name</string>
 </resources>
