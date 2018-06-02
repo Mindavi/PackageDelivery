@@ -7,12 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.ArrayAdapter
 import android.widget.TextView
-import com.myapplication.rick.packagedelivery.Address
-import com.myapplication.rick.packagedelivery.R
-import com.myapplication.rick.packagedelivery.RouteFormat
-import com.myapplication.rick.packagedelivery.Street
+import com.myapplication.rick.packagedelivery.*
 
 import kotlinx.android.synthetic.main.activity_add_address.*
 
@@ -26,15 +22,13 @@ class AddAddress : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 //        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        // TODO: make the back button work
 
         routeFormat = intent.getParcelableExtra(RouteCreation.INTENT_ROUTE_FORMAT)
 
-//        val street = routeFormat.route[0]
-//        val address = Address(street, street.range.lowerBound)
-        val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routeFormat.route)
+        val adapter = StreetAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routeFormat.route)
         suggestions_list.adapter = adapter
 
-        // TODO: put street name in text box when clicked
         suggestions_list.setOnItemClickListener { adapterView, _, i, _ ->
             val street = adapterView.getItemAtPosition(i)
             Log.d("PackageDelivery", street.toString())
@@ -46,6 +40,7 @@ class AddAddress : AppCompatActivity() {
 
         street_input.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
+                adapter.filter.filter(street_input.text)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
