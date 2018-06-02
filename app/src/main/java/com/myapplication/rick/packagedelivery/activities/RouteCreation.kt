@@ -1,5 +1,6 @@
 package com.myapplication.rick.packagedelivery.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +10,7 @@ import kotlinx.android.synthetic.main.activity_route_creation.*
 import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.myapplication.rick.packagedelivery.*
-
 
 class RouteCreation : AppCompatActivity() {
     private lateinit var route: Route
@@ -24,12 +23,25 @@ class RouteCreation : AppCompatActivity() {
         return true
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        when(resultCode) {
+            Activity.RESULT_OK -> {
+                val address = data?.getParcelableExtra<Address>(AddAddress.CHOSEN_ADDRESS) ?: return
+                route.addAddress(address)
+                addresses.add(address)
+                routeAdapter.notifyDataSetChanged()
+            }
+            Activity.RESULT_CANCELED -> {
+                // nothing to do
+            }
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.add_street -> {
-//                Toast.makeText(this, "Text", Toast.LENGTH_SHORT).show()
                 val intent = newIntent(this, route.routeFormat)
-                startActivity(intent)
+                startActivityForResult(intent, REQUEST_ADDRESS)
             }
         }
         return true
@@ -59,13 +71,12 @@ class RouteCreation : AppCompatActivity() {
         route_creation_recycler_view.layoutManager = routeLayoutManager
         routeAdapter = AddressAdapter(addresses)
         route_creation_recycler_view.adapter = routeAdapter
-
-        addresses.add(Address(Street("Street1", Range(1, 30, RangeType.All)), 15))
     }
 
     internal companion object {
         const val INTENT_ROUTE_FORMAT = "com.myapplication.rick.packagedelivery.routeFormat"
         const val INTENT_ROUTE = "com.myapplication.rick.packagedelivery.route"
+        const val REQUEST_ADDRESS = 1000
 
         private fun newIntent(context: Context, routeFormat: RouteFormat?): Intent {
             val intent = Intent(context, AddAddress::class.java)
