@@ -38,6 +38,10 @@ class AddAddress : AppCompatActivity() {
             }
         }
 
+        clear_button.setOnClickListener { _ ->
+            street_input.setText("")
+        }
+
         street_input.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) {
                 adapter.filter.filter(street_input.text)
