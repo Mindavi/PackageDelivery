@@ -20,6 +20,20 @@ class Address(val street: Street, val number: Int): Parcelable {
         }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other is Address) {
+            return other.number == number &&
+                    other.street == street
+        }
+        return false
+    }
+
+    override fun hashCode(): Int {
+        var result = street.hashCode()
+        result = 31 * result + number
+        return result
+    }
+
     override fun toString(): String {
         return "${street.name} $number"
     }
