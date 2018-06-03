@@ -33,7 +33,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text=""
-            android:hint="@string/input_street_name"
+            android:hint="@string/street_name_and_number"
             android:layout_toStartOf="@+id/clear_button"/>
 
         <ImageButton
