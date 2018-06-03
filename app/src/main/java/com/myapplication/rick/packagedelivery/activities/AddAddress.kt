@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import android.widget.Toast
 import com.myapplication.rick.packagedelivery.*
 
 import kotlinx.android.synthetic.main.activity_add_address.*
@@ -53,6 +56,39 @@ class AddAddress : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.add_address_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId) {
+            R.id.add_address -> {
+                val splitInput = street_input.text.toString().trim().split(' ')
+                if (splitInput.isEmpty() || splitInput[0].isBlank()) {
+                    Toast.makeText(this, "Please input a street name", Toast.LENGTH_SHORT).show()
+                    return super.onOptionsItemSelected(item)
+                }
+                val number = splitInput.last().toIntOrNull() ?: run {
+                    Toast.makeText(this, "Please input a number", Toast.LENGTH_SHORT).show()
+                    return super.onOptionsItemSelected(item)
+                }
+
+                val streetName = splitInput.subList(0, splitInput.count() - 1).joinToString(" ")
+                val street = routeFormat.route.find {
+                    it.name.toUpperCase().contains(streetName.trim().toUpperCase()) &&
+                    it.isValidNumber(number)
+                } ?: run {
+                    Toast.makeText(this, "Unknown street or invalid number", Toast.LENGTH_SHORT).show()
+                    return super.onOptionsItemSelected(item)
+                }
+                Toast.makeText(this, "Adding ${street.name}, $number" , Toast.LENGTH_SHORT).show()
+                sendResult(Address(street, number))
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     internal companion object {
