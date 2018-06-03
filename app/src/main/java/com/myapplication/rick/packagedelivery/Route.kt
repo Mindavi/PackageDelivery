@@ -13,6 +13,9 @@ internal class Route(val routeFormat: RouteFormat) : Parcelable {
 
     @Throws(IllegalArgumentException::class)
     fun addAddress(address: Address): Boolean {
+        if (addresses.contains(address)) {
+            return false
+        }
         if (routeFormat.route.contains(address.street)) {
             addresses.add(address)
             return true
