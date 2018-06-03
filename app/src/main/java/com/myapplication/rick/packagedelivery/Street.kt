@@ -14,6 +14,16 @@ class Street(val name: String, val range: Range, val direction: Direction = Dire
 
     override fun toString(): String = "$name, $range"
 
+    fun isValidNumber(number: Int): Boolean {
+        val evenNumber = number % 2 == 0
+        val correspondsWithRangeType = (range.rangeType == RangeType.All) ||
+                (evenNumber && (range.rangeType == RangeType.Even)) ||
+                (!evenNumber && (range.rangeType == RangeType.Uneven))
+        val inRange = number >= range.lowerBound &&
+                number <= range.upperBound
+        return correspondsWithRangeType && inRange
+    }
+
     override fun toCSV(): Array<String> {
         val values = ArrayList(range.toCSV().asList())
         values.add(0, name)
