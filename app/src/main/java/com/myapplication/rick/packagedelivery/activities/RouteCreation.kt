@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_route_creation.*
@@ -30,6 +31,7 @@ class RouteCreation : AppCompatActivity() {
                 val address = data?.getParcelableExtra<Address>(AddAddress.CHOSEN_ADDRESS) ?: return
                 route.addAddress(address)
                 addresses.add(address)
+                Snackbar.make(route_creation_layout, "Added $address", Snackbar.LENGTH_SHORT).show()
                 routeAdapter.notifyDataSetChanged()
             }
             Activity.RESULT_CANCELED -> {
