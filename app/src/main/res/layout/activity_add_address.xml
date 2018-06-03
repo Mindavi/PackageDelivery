@@ -37,14 +37,16 @@
             android:layout_toStartOf="@+id/clear_button"/>
 
         <ImageButton
+            android:layout_centerVertical="true"
             android:id="@+id/clear_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/clear_button_description"
             android:layout_alignParentEnd="true"
-            android:scaleType="centerInside"
+            android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            app:srcCompat="@drawable/ic_clear_black_24dp"
+            app:srcCompat="@drawable/ic_clear_red_24dp"
+            android:background="@android:color/transparent"
             />
     </RelativeLayout>
 
