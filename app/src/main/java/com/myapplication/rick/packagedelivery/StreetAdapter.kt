@@ -26,8 +26,9 @@ class StreetAdapter(context: Context, resourceId: Int, resourceId2: Int, private
                 if (constraint == null) return results
                 val filterList = ArrayList<Street>()
                 for (i in list.indices) {
-                    if (list[i].name.toUpperCase()
-                                    .contains(constraint.toString().toUpperCase())) {
+                    val containsName = list[i].name.toUpperCase()
+                            .contains(constraint.toString().trim().toUpperCase())
+                    if (containsName) {
                         filterList.add(list[i])
                     }
                 }
