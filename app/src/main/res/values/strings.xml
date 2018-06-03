@@ -8,4 +8,5 @@
     <string name="title_activity_add_address">AddAddress</string>
     <string name="input_street_name">Input a street name</string>
     <string name="clear_button_description">clear button</string>
+    <string name="no_route_format_file">No route format file found</string>
 </resources>

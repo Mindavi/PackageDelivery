@@ -39,7 +39,7 @@ class RouteFormatCreation : AppCompatActivity() {
 
     private fun noRouteFormatFound() {
         val textView = TextView(this)
-        textView.text = "No route format file found"
+        textView.text = getString(R.string.no_route_format_file)
         scroll_layout.addView(textView)
     }
 
