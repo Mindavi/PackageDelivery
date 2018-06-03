@@ -2,7 +2,6 @@ package com.myapplication.rick.packagedelivery
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.util.Locale
 
 /**
  * Created by Rick on 1-5-2016.
@@ -13,6 +12,15 @@ class Street(val name: String, val range: Range, val direction: Direction = Dire
     }
 
     override fun toString(): String = "$name, $range"
+
+    override fun equals(other: Any?): Boolean {
+        if (other is Street) {
+            return other.range == range &&
+                    other.name == name &&
+                    other.direction == direction
+        }
+        return false
+    }
 
     fun isValidNumber(number: Int): Boolean {
         val evenNumber = number % 2 == 0
@@ -38,6 +46,13 @@ class Street(val name: String, val range: Range, val direction: Direction = Dire
     }
 
     override fun describeContents(): Int = 0
+
+    override fun hashCode(): Int {
+        var result = name.hashCode()
+        result = 31 * result + range.hashCode()
+        result = 31 * result + direction.hashCode()
+        return result
+    }
 
     companion object {
         @JvmField

@@ -13,11 +13,9 @@ internal class Route(val routeFormat: RouteFormat) : Parcelable {
 
     @Throws(IllegalArgumentException::class)
     fun addAddress(address: Address): Boolean {
-        for (street in routeFormat.route) {
-            if (street == address.street) { //if street is in the routeFormat
-                addresses.add(address)
-                return true
-            }
+        if (routeFormat.route.contains(address.street)) {
+            addresses.add(address)
+            return true
         }
         return false
     }
