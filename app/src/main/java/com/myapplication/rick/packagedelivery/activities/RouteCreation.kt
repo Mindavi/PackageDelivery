@@ -28,9 +28,13 @@ class RouteCreation : AppCompatActivity() {
         when(resultCode) {
             Activity.RESULT_OK -> {
                 val address = data?.getParcelableExtra<Address>(AddAddress.CHOSEN_ADDRESS) ?: return
-                route.addAddress(address)
-                Snackbar.make(route_creation_layout, "Added $address", Snackbar.LENGTH_SHORT).show()
-                routeAdapter.notifyDataSetChanged()
+                if (route.addAddress(address)) {
+                    Snackbar.make(route_creation_layout, "Added $address", Snackbar.LENGTH_SHORT).show()
+                    routeAdapter.notifyDataSetChanged()
+                }
+                else {
+                    Snackbar.make(route_creation_layout, "$address already in route", Snackbar.LENGTH_SHORT).show()
+                }
             }
             Activity.RESULT_CANCELED -> {
                 // nothing to do
