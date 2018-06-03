@@ -36,7 +36,8 @@ class AddAddress : AppCompatActivity() {
             val street = adapterView.getItemAtPosition(i)
             Log.d("PackageDelivery", street.toString())
             if (street is Street) {
-                street_input.setText(street.name, TextView.BufferType.EDITABLE)
+                val streetNameAndSpace = "${street.name} "
+                street_input.setText(streetNameAndSpace, TextView.BufferType.EDITABLE)
                 street_input.setSelection(street_input.text.length)
             }
         }
@@ -69,10 +70,12 @@ class AddAddress : AppCompatActivity() {
                 val splitInput = street_input.text.toString().trim().split(' ')
                 if (splitInput.isEmpty() || splitInput[0].isBlank()) {
                     Toast.makeText(this, "Please input a street name", Toast.LENGTH_SHORT).show()
+                    street_input.setSelection(0)
                     return super.onOptionsItemSelected(item)
                 }
                 val number = splitInput.last().toIntOrNull() ?: run {
                     Toast.makeText(this, "Please input a number", Toast.LENGTH_SHORT).show()
+                    street_input.setSelection(street_input.text.count())
                     return super.onOptionsItemSelected(item)
                 }
 
@@ -82,9 +85,9 @@ class AddAddress : AppCompatActivity() {
                     it.isValidNumber(number)
                 } ?: run {
                     Toast.makeText(this, "Unknown street or invalid number", Toast.LENGTH_SHORT).show()
+                    street_input.setSelection(street_input.text.count())
                     return super.onOptionsItemSelected(item)
                 }
-                Toast.makeText(this, "Adding ${street.name}, $number" , Toast.LENGTH_SHORT).show()
                 sendResult(Address(street, number))
             }
         }
