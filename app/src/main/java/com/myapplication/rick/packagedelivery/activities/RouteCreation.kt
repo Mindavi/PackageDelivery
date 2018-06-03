@@ -24,6 +24,7 @@ class RouteCreation : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode != REQUEST_ADDRESS) return
         when(resultCode) {
             Activity.RESULT_OK -> {
                 val address = data?.getParcelableExtra<Address>(AddAddress.CHOSEN_ADDRESS) ?: return
