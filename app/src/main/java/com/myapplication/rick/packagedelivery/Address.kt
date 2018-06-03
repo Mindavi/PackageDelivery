@@ -15,7 +15,7 @@ class Address(val street: Street, val number: Int): Parcelable {
         if (street.range.rangeType != RangeType.All) {
             val rangeType : RangeType = if (number % 2 == 0) RangeType.Even else RangeType.Uneven
             if (street.range.rangeType != rangeType) {
-                throw IllegalArgumentException("Number not corresponding to the rangetype")
+                throw IllegalArgumentException("Number not corresponding to the range type")
             }
         }
     }
