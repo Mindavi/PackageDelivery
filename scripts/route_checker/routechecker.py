@@ -19,7 +19,7 @@ def main():
         if not os.path.isfile(filename):
             print("Invalid filename")
             print_usage()
-            exit(2)
+            sys.exit(2)
         with open(filename, "r") as csvfile:
             reader = csv.reader(csvfile)
             valid = True
@@ -49,12 +49,12 @@ def main():
                     valid = False
             if valid:
                 print("File is valid")
-                exit(0)
+                sys.exit(0)
             else:
-                exit(1)
+                sys.exit(1)
     else:
         print_usage()
-        exit(2)
+        sys.exit(2)
 
 
 if __name__ == "__main__":
