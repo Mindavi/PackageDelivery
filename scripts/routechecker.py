@@ -33,6 +33,7 @@ def main():
                     direction = row[4]
                     valid_name = name == name.strip() != ""
                     valid_range = (upperbound >= lowerbound)
+                    # TODO: check if rangetype and lower/upper bound are compatible
                     # print("Lowerbound: {}, upperbound: {}".format(
                     # lowerbound, upperbound))
                     valid_rangetype = rangetype in valid_rangetypes
