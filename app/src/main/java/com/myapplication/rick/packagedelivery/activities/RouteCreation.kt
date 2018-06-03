@@ -17,7 +17,6 @@ class RouteCreation : AppCompatActivity() {
     private lateinit var route: Route
     private lateinit var routeAdapter: AddressAdapter
     private lateinit var routeLayoutManager: RecyclerView.LayoutManager
-    private val addresses: ArrayList<Address> = ArrayList()
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.creation_menu, menu)
@@ -30,7 +29,6 @@ class RouteCreation : AppCompatActivity() {
             Activity.RESULT_OK -> {
                 val address = data?.getParcelableExtra<Address>(AddAddress.CHOSEN_ADDRESS) ?: return
                 route.addAddress(address)
-                addresses.add(address)
                 Snackbar.make(route_creation_layout, "Added $address", Snackbar.LENGTH_SHORT).show()
                 routeAdapter.notifyDataSetChanged()
             }
@@ -72,7 +70,7 @@ class RouteCreation : AppCompatActivity() {
         route_creation_recycler_view.setHasFixedSize(true)
         routeLayoutManager = LinearLayoutManager(this)
         route_creation_recycler_view.layoutManager = routeLayoutManager
-        routeAdapter = AddressAdapter(addresses)
+        routeAdapter = AddressAdapter(route.addresses)
         route_creation_recycler_view.adapter = routeAdapter
     }
 
