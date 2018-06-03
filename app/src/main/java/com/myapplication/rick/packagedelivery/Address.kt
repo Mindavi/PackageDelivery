@@ -20,6 +20,10 @@ class Address(val street: Street, val number: Int): Parcelable {
         }
     }
 
+    override fun toString(): String {
+        return "${street.name} $number"
+    }
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeParcelable(street, flags)
         parcel.writeInt(number)
