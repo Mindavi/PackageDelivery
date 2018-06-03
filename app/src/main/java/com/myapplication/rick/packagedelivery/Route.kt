@@ -18,12 +18,13 @@ internal class Route(val routeFormat: RouteFormat) : Parcelable {
         }
         if (routeFormat.route.contains(address.street)) {
             addresses.add(address)
+            sort()
             return true
         }
         return false
     }
 
-    fun sort() {
+    private fun sort() {
         Collections.sort(addresses, comparator)
     }
 
