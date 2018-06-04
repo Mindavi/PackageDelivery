@@ -18,7 +18,6 @@ internal class RouteFormatReader {
         val content = reader.readAll()
 
         for (row in content) {
-            //println("Row size: ${row.size}")
             if (row.size == 5) {
                 val name = row[0]
                 val rangeLow = Integer.parseInt(row[1])
