@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.myapplication.rick.packagedelivery.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_routeformat_creation.*
 import java.io.File
 
 import java.io.IOException
@@ -13,7 +13,7 @@ import java.util.ArrayList
 class RouteFormatCreation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_routeformat_creation)
 
         btn_save_format.setOnClickListener({ _ ->
             val streets = ArrayList<Street>()

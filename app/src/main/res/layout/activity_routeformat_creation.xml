@@ -9,18 +9,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.myapplication.rick.packagedelivery.activities.RouteFormatCreation">
 
-    <Button
-        android:id="@+id/btn_save_format"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/button_layout"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save_format" />
+        style="?android:attr/buttonBarStyle">
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btn_save_format"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/save_format" />
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btn_load_format"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/load_format" />
+    </LinearLayout>
+
 
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_save_format"
+        android:layout_below="@+id/button_layout"
         android:fillViewport="false">
 
         <LinearLayout
@@ -32,12 +48,4 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/btn_load_format"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/load_format" />
 </RelativeLayout>
