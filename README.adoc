@@ -1,5 +1,7 @@
 # PackageDelivery
 
+image::assets/packagedelivery-example.gif[App example]
+
 ## Summary
 
 A mobile application that automatically sorts package delivery routes for you in the order given by you or a predefined list.
