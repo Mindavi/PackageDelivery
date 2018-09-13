@@ -58,7 +58,8 @@ class RouteSelection : AppCompatActivity() {
                         routes.add(routeFormatReader.parseStreets(it))
                     } catch (ioEx: IOException) {
                         // this file might be invalid, skip it
-                        println("Invalid file in folder")
+                        println("Invalid file in folder: ${it.nameWithoutExtension}")
+                        Toast.makeText(this, "Invalid file: ${it.nameWithoutExtension}", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

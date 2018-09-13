@@ -15,9 +15,27 @@ class Address(val street: Street, val number: Int): Parcelable {
         if (street.range.rangeType != RangeType.All) {
             val rangeType : RangeType = if (number % 2 == 0) RangeType.Even else RangeType.Uneven
             if (street.range.rangeType != rangeType) {
-                throw IllegalArgumentException("Number not corresponding to the rangetype")
+                throw IllegalArgumentException("Number not corresponding to the range type")
             }
         }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (other is Address) {
+            return other.number == number &&
+                    other.street == street
+        }
+        return false
+    }
+
+    override fun hashCode(): Int {
+        var result = street.hashCode()
+        result = 31 * result + number
+        return result
+    }
+
+    override fun toString(): String {
+        return "${street.name} $number"
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

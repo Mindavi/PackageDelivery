@@ -34,8 +34,7 @@ class TestRouteComparator {
     }
 
     @Test
-    fun testSortAddresses() {
-        route.sort()
+    fun testAddressesAreSorted() {
         assertEquals(address1.street.name, route.addresses[0].street.name)
         assertEquals(address1.number, route.addresses[0].number)
 

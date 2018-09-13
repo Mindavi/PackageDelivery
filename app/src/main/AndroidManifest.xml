@@ -13,32 +13,25 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
             android:name=".activities.RouteSelection"
-            android:label="@string/title_activity_route_selection">
+            android:label="@string/title_activity_route_selection"
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.RouteFormatCreation">
+        <activity android:name=".activities.RouteFormatCreation"
+            android:label="@string/route_format_creation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.RouteCreation"
-            android:parentActivityName=".activities.RouteSelection">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.myapplication.rick.packagedelivery.activities.RouteSelection" />
-        </activity>
+        <activity android:name=".activities.RouteCreation"/>
         <activity
             android:name=".activities.AddAddress"
             android:label="@string/title_activity_add_address"
-            android:parentActivityName=".activities.RouteCreation"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:parentActivityName=".activities.RouteCreation">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.myapplication.rick.packagedelivery.activities.RouteCreation" />

@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">PackageDelivery</string>
-    <string name="title_activity_route_selection">RouteSelection</string>
+    <string name="title_activity_route_selection">Package delivery</string>
+    <string name="route_format_creation">Route creator</string>
     <string name="route_selected">Selected route %1$s</string>
     <string name="add_item">Add item</string>
     <string name="save_format">Save format</string>
     <string name="load_format">Load format</string>
     <string name="title_activity_add_address">AddAddress</string>
+    <string name="clear_button_description">clear button</string>
+    <string name="no_route_format_file">No route format file found</string>
+    <string name="add_address">Add address</string>
+    <string name="street_name_and_number">Street name + number</string>
 </resources>

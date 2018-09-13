@@ -3,9 +3,9 @@ Farragut,1,168,All,LowToHigh
 Killdeer,2,117,All,HighToLow
 Mcguire,1,95,All,LowToHigh
 Glacier Hill,2,126,All,HighToLow
-Amoth,2,32,All,HighToLow
-Shasta,2,118,All,LowToHigh
-Northport,1,21,All,HighToLow
+Amoth,2,32,Even,HighToLow
+Shasta,2,118,Even,LowToHigh
+Northport,1,21,Uneven,HighToLow
 Hoard,2,183,All,LowToHigh
 Emmet,2,163,All,LowToHigh
 Beilfuss,2,59,All,LowToHigh
@@ -22,7 +22,7 @@ Pennsylvania,1,177,All,LowToHigh
 Weeping Birch,2,188,All,HighToLow
 Cottonwood,1,11,All,LowToHigh
 Michigan,1,194,All,LowToHigh
-Johnson,1,138,All,HighToLow
+Johnson,2,138,Even,HighToLow
 Hudson,1,102,All,HighToLow
 Ruskin,1,59,All,LowToHigh
 Redwing,2,200,All,LowToHigh

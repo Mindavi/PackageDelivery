@@ -26,6 +26,15 @@ class Range(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) 
         }
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (other is Range) {
+            return other.rangeType == rangeType &&
+                    other.lowerBound == lowerBound &&
+                    other.upperBound == upperBound
+        }
+        return false
+    }
+
     override fun toString(): String {
         return "$lowerBound-$upperBound, $rangeType"
     }
@@ -41,6 +50,13 @@ class Range(val lowerBound: Int, val upperBound: Int, val rangeType: RangeType) 
     }
 
     override fun describeContents(): Int = 0
+
+    override fun hashCode(): Int {
+        var result = lowerBound
+        result = 31 * result + upperBound
+        result = 31 * result + rangeType.hashCode()
+        return result
+    }
 
     companion object {
         @JvmField

@@ -1,9 +1,17 @@
 # PackageDelivery
 
+image::assets/packagedelivery-example.gif[App example]
+
 ## Summary
 
 A mobile application that automatically sorts package delivery routes for you in the order given by you or a predefined list.
 It will show the stops you have to make in order.
+
+## Main features
+
+* Auto-sorting addresses based on predefined routes (route formats)
+* Add a new address quickly
+* Friendly link:docs/file-format.md[file format] for route formats
 
 ## Goal of this project
 
@@ -16,10 +24,9 @@ The routes are given on a handheld computer, but they're not totally in order.
 In order to make sure the routes are driven in the most efficient/easy way,
 all the stops that have to be made are written on the list, which is in order.
 
-
 ## Problems of the route-lists
 
-At the moment, there are lists looking like this. 
+At the moment, there are lists looking like this.
 
 [cols="1,1,6,12"]
 |===
@@ -27,7 +34,7 @@ At the moment, there are lists looking like this.
 | 2     | C     | Lawnway road              |
 | 3     | P     | Holastreet 11-51 22-30    |
 | ...   | ...   | ...                       |
-| 154   | ...   | ...                       | 
+| 154   | ...   | ...                       |
 |===
 
 They are sealed with plastic and they're written on with whiteboard markers.
