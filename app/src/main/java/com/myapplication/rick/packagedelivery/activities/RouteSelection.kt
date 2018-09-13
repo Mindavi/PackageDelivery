@@ -21,7 +21,6 @@ class RouteSelection : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_route_selection)
-        setSupportActionBar(standard_toolbar)
 
         val routes = readRoutes() ?: return
         val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, android.R.id.text1, routes)
