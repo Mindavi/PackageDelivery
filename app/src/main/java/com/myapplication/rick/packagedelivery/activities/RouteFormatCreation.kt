@@ -60,7 +60,7 @@ class RouteFormatCreation : AppCompatActivity() {
     private fun readRouteFormat(): RouteFormat? {
         val folder = File(this.getExternalFilesDir(null), "routes")
         val routeFiles = folder.listFiles()
-        if (routeFiles.count() < 1) return null // there are no files
+        if (routeFiles == null || routeFiles.count() < 1) return null // there are no files
         val routeFormatReader = RouteFormatReader()
         for (routeFile in routeFiles) {
             println(routeFile.absolutePath)
